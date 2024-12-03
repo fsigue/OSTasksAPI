@@ -1,0 +1,6 @@
+@OSTasksAPI_HostAddress = http://localhost:5252
+
+GET {{OSTasksAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
