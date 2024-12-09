@@ -45,7 +45,7 @@ namespace OSTasksAPI.Services
         {
 
             var qryResult = _tasksService.Tasks
-                            .Where(record => record.TaskStatus != "Open")
+                            .Where(record => record.TaskStatus == "Open")
                             .Select(m => new TasksOutput
                             {
                                 Task_no = m.TaskNo.ToString(),
@@ -69,7 +69,7 @@ namespace OSTasksAPI.Services
         {
 
             var qryResult = _tasksService.Tasks
-                            .Where(record => record.TaskStatus != "Closed")
+                            .Where(record => record.TaskStatus == "Closed")
                             .Select(m => new TasksOutput
                             {
                                 Task_no = m.TaskNo.ToString(),
