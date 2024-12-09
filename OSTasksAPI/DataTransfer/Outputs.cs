@@ -12,6 +12,14 @@
         public string Postedby { get; set; }
         public string Collaborator { get; set; }
     }
+    public class SubTasksOutput
+    {
+        public string Ref_no { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public DateTime Posted { get; set; }
+        public string Postedby { get; set; }
+    }
     public class DeptOutput
     {
         public string Dept_code { get; set; }

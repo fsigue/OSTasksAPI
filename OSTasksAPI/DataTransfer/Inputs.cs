@@ -8,6 +8,7 @@ namespace OSTasksAPI.DataTransfer
         public int? RefNo { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        //public string Department { get; set; }
         public string Assignee { get; set; }
         public DateTime Posted { get; set; }
         public DateTime DueDate { get; set; }

@@ -15,7 +15,19 @@ namespace OSTasksAPI.Controllers
             _tasksService = tasksService;
         }
 
-        [HttpGet("Open Tasks")]
+        [HttpGet("tasks")]
+        public IActionResult Tasks()
+        {
+
+            var task = _tasksService.GetAllTasks();
+            if (task is object)
+            {
+                return Ok(task);
+            }
+            return NotFound();
+        }
+
+        [HttpGet("tasks/open")]
         public IActionResult OpenTasks()
         {
 
@@ -27,11 +39,23 @@ namespace OSTasksAPI.Controllers
             return NotFound();
         }
 
-        [HttpGet("Closed Tasks")]
+        [HttpGet("tasks/closed")]
         public IActionResult ClosedTasks()
         {
 
             var task = _tasksService.GetAllClosedTasks();
+            if (task is object)
+            {
+                return Ok(task);
+            }
+            return NotFound();
+        }
+
+        [HttpGet("tasks/id")]
+        public IActionResult GetTasksById(int num)
+        {
+
+            var task = _tasksService.GetSubTasks(num);
             if (task is object)
             {
                 return Ok(task);

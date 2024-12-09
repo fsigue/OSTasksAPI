@@ -17,6 +17,28 @@ namespace OSTasksAPI.Services
             _tasksService = tasksRepository;
         }
 
+        #region GetAllTasks
+        public IEnumerable<TasksOutput> GetAllTasks()
+        {
+
+            var qryResult = _tasksService.Tasks
+                            .Select(m => new TasksOutput
+                            {
+                                Task_no = m.TaskNo.ToString(),
+                                Title = m.Title,
+                                Description = m.Description,
+                                Assignee = m.Assignee.ToString(),
+                                Status = m.TaskStatus,
+                                Posted = m.Posted,
+                                Duedate = m.DueDate,
+                                Postedby = m.PostedBy,
+                                Collaborator = m.Collab,
+                            }).ToList();
+
+            return qryResult;
+        }
+        #endregion
+
         #region GetAllOpenTasks
         public IEnumerable<TasksOutput> GetAllOpenTasks()
         {
@@ -63,6 +85,26 @@ namespace OSTasksAPI.Services
         }
         #endregion
 
+        #region GetSubTasks
+        public IEnumerable<SubTasksOutput> GetSubTasks(int tasknum)
+        {
+
+            var qryResult = _tasksService.SubTasks
+                            .Where(m => m.TaskNo == tasknum)
+                            .OrderByDescending(m => m.Posted)
+                            .Select(m => new SubTasksOutput
+                            {
+                                Ref_no = m.RefNo.ToString(),
+                                Title = m.Titile,
+                                Description = m.Description,
+                                Posted = m.Posted,
+                                Postedby = m.PostedBy
+                            }).ToList();
+
+            return qryResult;
+        }
+        #endregion
+
         #region CreateNewTask
         public IEnumerable<TasksOutput> CreateNewTask(TasksInputs input)
         {
@@ -76,6 +118,7 @@ namespace OSTasksAPI.Services
                 TaskNo = newTaskNumber,
                 Title = input.Title,
                 Description = input.Description,
+                //Dept = input.Department,
                 Assignee = input.Assignee,
                 TaskStatus = "Open",
                 Posted = input.Posted,
