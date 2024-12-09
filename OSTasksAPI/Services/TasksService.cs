@@ -28,11 +28,12 @@ namespace OSTasksAPI.Services
                                 Title = m.Title,
                                 Description = m.Description,
                                 Assignee = m.Assignee.ToString(),
+                                Department = m.Department,
                                 Status = m.TaskStatus,
                                 Posted = m.Posted,
                                 Duedate = m.DueDate,
                                 Postedby = m.PostedBy,
-                                Collaborator = m.Collab,
+                                Collaborator = m.Collab
                             }).ToList();
 
             return qryResult;
@@ -51,11 +52,12 @@ namespace OSTasksAPI.Services
                                 Title = m.Title,
                                 Description = m.Description,
                                 Assignee = m.Assignee.ToString(),
+                                Department = m.Department,
                                 Status = m.TaskStatus,
                                 Posted = m.Posted,
                                 Duedate = m.DueDate,
                                 Postedby = m.PostedBy,
-                                Collaborator = m.Collab,
+                                Collaborator = m.Collab
                             }).ToList();
 
             return qryResult;
@@ -74,11 +76,12 @@ namespace OSTasksAPI.Services
                                 Title = m.Title,
                                 Description = m.Description,
                                 Assignee = m.Assignee.ToString(),
+                                Department = m.Department,
                                 Status = m.TaskStatus,
                                 Posted = m.Posted,
                                 Duedate = m.DueDate,
                                 Postedby = m.PostedBy,
-                                Collaborator = m.Collab,
+                                Collaborator = m.Collab
                             }).ToList();
 
             return qryResult;
@@ -118,7 +121,7 @@ namespace OSTasksAPI.Services
                 TaskNo = newTaskNumber,
                 Title = input.Title,
                 Description = input.Description,
-                //Dept = input.Department,
+                Department = input.Department,
                 Assignee = input.Assignee,
                 TaskStatus = "Open",
                 Posted = input.Posted,
@@ -174,6 +177,7 @@ namespace OSTasksAPI.Services
             result.Title = newTask.Title;
             result.Description = newTask.Description;
             result.Assignee = newTask.Assignee.ToString();
+            result.Department = newTask.Department.ToString();
             result.Status = newTask.TaskStatus.ToString();
             result.Posted = newTask.Posted;
             result.Postedby = newTask.PostedBy.ToString();

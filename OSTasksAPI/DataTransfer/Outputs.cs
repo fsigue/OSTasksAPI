@@ -6,6 +6,7 @@
         public string Title { get; set; }
         public string Description { get; set; }
         public string Assignee { get; set; }
+        public string Department { get; set; }
         public DateTime Posted { get; set; }
         public DateTime Duedate { get; set; }
         public string Status { get; set; }

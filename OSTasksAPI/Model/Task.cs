@@ -46,6 +46,10 @@ public partial class Task
     [StringLength(250)]
     public string Collab { get; set; } = null!;
 
+    [Column("DEPARTMENT")]
+    [StringLength(250)]
+    public string? Department { get; set; }
+
     [ForeignKey("Assignee")]
     [InverseProperty("Tasks")]
     public virtual Employee AssigneeNavigation { get; set; } = null!;
