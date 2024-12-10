@@ -18,70 +18,56 @@ namespace OSTasksAPI.Services
         }
 
         #region GetAllTasks
-        public IEnumerable<TasksOutput> GetAllTasks()
+        public IEnumerable<MainTaskOutput> GetAllTasks()
         {
-
             var qryResult = _tasksService.Tasks
-                            .Select(m => new TasksOutput
+                            .Select(m => new MainTaskOutput
                             {
                                 Task_no = m.TaskNo.ToString(),
-                                Title = m.Title,
-                                Description = m.Description,
-                                Assignee = m.Assignee.ToString(),
-                                Department = m.Department,
-                                Status = m.TaskStatus,
                                 Posted = m.Posted,
-                                Duedate = m.DueDate,
-                                Postedby = m.PostedBy,
-                                Collaborator = m.Collab
+                                Title = m.Title,
+                                Department = m.Department,
+                                Assignee = m.Assignee.ToString(),
+                                Status = m.TaskStatus,
                             }).ToList();
 
             return qryResult;
         }
         #endregion
+
 
         #region GetAllOpenTasks
-        public IEnumerable<TasksOutput> GetAllOpenTasks()
+        public IEnumerable<OpenTaskOutput> GetAllOpenTasks()
         {
-
             var qryResult = _tasksService.Tasks
                             .Where(record => record.TaskStatus == "Open")
-                            .Select(m => new TasksOutput
+                            .Select(m => new OpenTaskOutput
                             {
                                 Task_no = m.TaskNo.ToString(),
-                                Title = m.Title,
-                                Description = m.Description,
-                                Assignee = m.Assignee.ToString(),
-                                Department = m.Department,
-                                Status = m.TaskStatus,
                                 Posted = m.Posted,
-                                Duedate = m.DueDate,
-                                Postedby = m.PostedBy,
-                                Collaborator = m.Collab
+                                Title = m.Title,
+                                Department = m.Department,
+                                Assignee = m.Assignee.ToString(),
+                                Status = m.TaskStatus,
                             }).ToList();
 
             return qryResult;
         }
         #endregion
 
-        #region GetAllCLosedTasks
-        public IEnumerable<TasksOutput> GetAllClosedTasks()
+        #region GetAllClosedTasks
+        public IEnumerable<ClosedTaskOutput> GetAllClosedTasks()
         {
-
             var qryResult = _tasksService.Tasks
                             .Where(record => record.TaskStatus == "Closed")
-                            .Select(m => new TasksOutput
+                            .Select(m => new ClosedTaskOutput
                             {
                                 Task_no = m.TaskNo.ToString(),
-                                Title = m.Title,
-                                Description = m.Description,
-                                Assignee = m.Assignee.ToString(),
-                                Department = m.Department,
-                                Status = m.TaskStatus,
                                 Posted = m.Posted,
-                                Duedate = m.DueDate,
-                                Postedby = m.PostedBy,
-                                Collaborator = m.Collab
+                                Title = m.Title,
+                                Department = m.Department,
+                                Assignee = m.Assignee.ToString(),
+                                Status = m.TaskStatus,
                             }).ToList();
 
             return qryResult;

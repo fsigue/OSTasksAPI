@@ -16,11 +16,11 @@ namespace OSTasksAPI.Controllers
         }
 
         [HttpGet("tasks")]
-        public IActionResult Tasks()
+        public IActionResult GetTasks()
         {
 
             var task = _tasksService.GetAllTasks();
-            if (task is object)
+            if (task != null && task.Any())
             {
                 return Ok(task);
             }
