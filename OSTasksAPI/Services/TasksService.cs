@@ -78,20 +78,20 @@ namespace OSTasksAPI.Services
         public IEnumerable<TaskDetailsOutput> GetSubTasks(int tasknum)
         {
 
-            var qryResult = _tasksService.SubTasks
+            var qryResult = _tasksService.Tasks
                             .Where(m => m.TaskNo == tasknum)
                             .OrderByDescending(m => m.Posted)
                             .Select(m => new TaskDetailsOutput
                             {
                                 Task_no = m.TaskNo.ToString(),
-                                Task_title = m.Titile,
+                                Task_title = m.Title,
                                 Descrpition = m.Description,
                                 Posted = m.Posted,
                                 Assignee = m.PostedBy,
-                                DueDate = "",
-                                Collaborators = m.PostedBy,
-                                Department = "",
-                                Status = "",
+                                DueDate = m.DueDate,
+                                Collaborators = m.Collab,
+                                Department = m.Department,
+                                Status = m.TaskStatus,
 
                             }).ToList();
 
