@@ -64,7 +64,7 @@ namespace OSTasksAPI.Controllers
         }
 
 
-        [HttpPost("Create Tasks")]
+        [HttpPost("task/create")]
         public IActionResult CreateTasks([FromBody] TasksInputs input)
         {
 
@@ -77,7 +77,7 @@ namespace OSTasksAPI.Controllers
         }
 
 
-        [HttpGet("Department List")]
+        [HttpGet("DepartmentList")]
         public IActionResult DeptList()
         {
 
@@ -89,7 +89,7 @@ namespace OSTasksAPI.Controllers
             return NotFound();
         }
 
-        [HttpGet("Team List")]
+        [HttpGet("TeamList")]
         public IActionResult TeamList()
         {
 
@@ -101,7 +101,7 @@ namespace OSTasksAPI.Controllers
             return NotFound();
         }
 
-        [HttpGet("Employee List")]
+        [HttpGet("EmployeeList")]
         public IActionResult EmpList()
         {
 
