@@ -75,19 +75,24 @@ namespace OSTasksAPI.Services
         #endregion
 
         #region GetSubTasks
-        public IEnumerable<SubTasksOutput> GetSubTasks(int tasknum)
+        public IEnumerable<TaskDetailsOutput> GetSubTasks(int tasknum)
         {
 
             var qryResult = _tasksService.SubTasks
                             .Where(m => m.TaskNo == tasknum)
                             .OrderByDescending(m => m.Posted)
-                            .Select(m => new SubTasksOutput
+                            .Select(m => new TaskDetailsOutput
                             {
-                                Ref_no = m.RefNo.ToString(),
-                                Title = m.Titile,
-                                Description = m.Description,
+                                Task_no = m.TaskNo.ToString(),
+                                Task_title = m.Titile,
+                                Descrpition = m.Description,
                                 Posted = m.Posted,
-                                Postedby = m.PostedBy
+                                Assignee = m.PostedBy,
+                                DueDate = "",
+                                Collaborators = m.PostedBy,
+                                Department = "",
+                                Status = "",
+
                             }).ToList();
 
             return qryResult;
